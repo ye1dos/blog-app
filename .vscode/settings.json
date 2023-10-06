@@ -1,0 +1,32 @@
+{
+  // Use `eslint` for vue, ts and js
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[js]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[ts]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "eslint.validate": ["javascript", "typescript", "vue"],
+  // Tailwind Support, see https://tailwindcss.nuxt.dev/tailwind/editor-support
+  // "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "WillLuke.nextjs.addTypesOnSave": true,
+  "WillLuke.nextjs.hasPrompted": true,
+  "cSpell.words": [
+    "Csvg"
+  ]
+}

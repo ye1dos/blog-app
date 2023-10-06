@@ -32,7 +32,6 @@ services:
   #   volumes:
   #     - ./frontend:/app
   #     - /app/node_modules
-  #     - /app/.next
   #     - ./logs/frontend:/root/.npm/_logs
   #   env_file:
   #     - ./.env

@@ -10,8 +10,10 @@ module.exports = createCoreController("api::like.like", ({ strapi }) => ({
   async findLikeByIds(ctx) {
     const { userId, postId } = ctx.query;
     const likes = await strapi.service("api::like.like").find({
-      userId: userId,
-      postId: postId,
+      where: {
+        userId: userId,
+        postId: postId,
+      },
     });
     return this.transformResponse(likes);
   },
@@ -20,7 +22,7 @@ module.exports = createCoreController("api::like.like", ({ strapi }) => ({
     const post = await strapi.service("api::post.post").findOne(postId + "");
     await strapi.service("api::post.post").update(postId + "", {
       data: {
-        likesNumber: post.likesNumber + 1,
+        likesNumber: "" + (Number(post.likesNumber) + 1),
       },
     });
     const likes = await strapi.service("api::like.like").create({
@@ -38,7 +40,7 @@ module.exports = createCoreController("api::like.like", ({ strapi }) => ({
     const post = await strapi.service("api::post.post").findOne(postId + "");
     await strapi.service("api::post.post").update(postId + "", {
       data: {
-        likesNumber: post.likesNumber - 1,
+        likesNumber: "" + (Number(post.likesNumber) - 1),
       },
     });
     const like = await strapi.service("api::like.like").find({

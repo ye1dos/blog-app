@@ -15,6 +15,14 @@ export const useDislikePostMutation = () => {
     return useMutation({
         mutationFn: (data: Partial<ILike> & { authorId: string }) =>
             dislikePost(data),
+        // onSuccess: async (dislike) => {
+        //     queryClient.invalidateQueries([
+        //         "likes",
+        //         dislike.userId,
+        //         dislike.postId,
+        //     ]);
+
+        // },
         onMutate: async (dislike) => {
             await queryClient.cancelQueries([
                 "likes",

@@ -28,6 +28,7 @@ const PostPreview = (props: any) => {
     );
 
     const handleLikePost = async () => {
+        console.log("props", props);
         const data = {
             postId: props.id,
             userId: user?.id,
@@ -182,7 +183,7 @@ const PostPreview = (props: any) => {
                     mt="auto"
                 >
                     <Box>
-                        <Button
+                        {/* <Button
                             variant="text"
                             startIcon={
                                 isPostLiked ? (
@@ -194,8 +195,8 @@ const PostPreview = (props: any) => {
                             size={isSmallScreen ? "small" : "medium"}
                             onClick={handleLikePost}
                         >
-                            {props.likesNumber}
-                        </Button>
+                            {props.attributes.likesNumber}
+                        </Button> */}
                         <Button
                             variant="text"
                             startIcon={<ChatBubbleOutlineIcon />}

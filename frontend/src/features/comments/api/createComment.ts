@@ -6,13 +6,12 @@ import { selectCurrentUser } from "../../auth/slices/authSlice";
 
 const createComment = async (comment: Partial<IComment>): Promise<IComment> => {
     const response = await api.post("/comments/", { data: comment });
-    return response.data;
+    return { data: response.data, post: comment.post };
 };
 
 export const useCreateCommentMutation = () => {
     const queryClient = useQueryClient();
     const author = useSelector(selectCurrentUser);
-
     return useMutation({
         mutationFn: (comment: Partial<IComment>) => createComment(comment),
         onMutate: async (comment) => {
@@ -33,6 +32,7 @@ export const useCreateCommentMutation = () => {
                             updatedAt: new Date().toISOString(),
                             author,
                         };
+                        console.log(newComment);
                         commentsCopy.push(newComment as IComment);
                         return commentsCopy;
                     },
@@ -48,6 +48,9 @@ export const useCreateCommentMutation = () => {
                     context.previousComments,
                 );
             }
+        },
+        onSuccess: async (newComment) => {
+            queryClient.invalidateQueries(["comments", "post", newComment.post]);
         },
         onSettled: (newComment) => {
             queryClient.invalidateQueries([

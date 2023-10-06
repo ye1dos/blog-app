@@ -48,7 +48,6 @@ const EditorTabs = (props: { postId?: string; isEdit?: boolean }) => {
             </Box>
 
             {<TabPanel value={tabValue} index={0}>
-                {JSON.stringify(post?.data)}
                 <PostForm
                     id={post?.data?.id}
                     setTitle={setTitle}

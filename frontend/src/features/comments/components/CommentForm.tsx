@@ -33,7 +33,7 @@ const CommentForm = (props: Props) => {
             try {
                 const newComment = await createComment(commentData);
                 queryClient.invalidateQueries(["comments", "post", newComment?.postId]);
-                await getPostComments(props.postId);
+                // await getPostComments(props.postId);
                 setCommentContent("");
             } catch (error) {
                 console.error("Error creating comment:", error);
